@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Position Grades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Position id</th>
+      <th>Position name</th>
+      <th>Job ability grade</th>
+      <th>Task time</th>
+      <th>Task grade</th>
+      <th>Base age</th>
+      <th>Add amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @position_grades.each do |position_grade| %>
+      <tr>
+        <td><%= position_grade.position_ID %></td>
+        <td><%= position_grade.position_name %></td>
+        <td><%= position_grade.job_ability_grade %></td>
+        <td><%= position_grade.task_time %></td>
+        <td><%= position_grade.task_grade %></td>
+        <td><%= position_grade.base_age %></td>
+        <td><%= position_grade.add_amount %></td>
+        <td><%= link_to 'Show', position_grade %></td>
+        <td><%= link_to 'Edit', edit_position_grade_path(position_grade) %></td>
+        <td><%= link_to 'Destroy', position_grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Position Grade', new_position_grade_path %>
