@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Position id:</strong>
+  <%= @position_grade.position_ID %>
+</p>
+
+<p>
+  <strong>Position name:</strong>
+  <%= @position_grade.position_name %>
+</p>
+
+<p>
+  <strong>Job ability grade:</strong>
+  <%= @position_grade.job_ability_grade %>
+</p>
+
+<p>
+  <strong>Task time:</strong>
+  <%= @position_grade.task_time %>
+</p>
+
+<p>
+  <strong>Task grade:</strong>
+  <%= @position_grade.task_grade %>
+</p>
+
+<p>
+  <strong>Base age:</strong>
+  <%= @position_grade.base_age %>
+</p>
+
+<p>
+  <strong>Add amount:</strong>
+  <%= @position_grade.add_amount %>
+</p>
+
+<%= link_to 'Edit', edit_position_grade_path(@position_grade) %> |
+<%= link_to 'Back', position_grades_path %>
