@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Residence Allowances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Residence type</th>
+      <th>Price</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @residence_allowances.each do |residence_allowance| %>
+      <tr>
+        <td><%= residence_allowance.residence_type %></td>
+        <td><%= residence_allowance.price %></td>
+        <td><%= link_to 'Show', residence_allowance %></td>
+        <td><%= link_to 'Edit', edit_residence_allowance_path(residence_allowance) %></td>
+        <td><%= link_to 'Destroy', residence_allowance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Residence Allowance', new_residence_allowance_path %>

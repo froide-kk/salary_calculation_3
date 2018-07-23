@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Family type:</strong>
+  <%= @family_allowance.family_type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @family_allowance.price %>
+</p>
+
+<%= link_to 'Edit', edit_family_allowance_path(@family_allowance) %> |
+<%= link_to 'Back', family_allowances_path %>

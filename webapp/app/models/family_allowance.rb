@@ -1,0 +1,2 @@
+class FamilyAllowance < ApplicationRecord
+end

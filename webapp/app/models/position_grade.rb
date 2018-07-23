@@ -1,0 +1,2 @@
+class PositionGrade < ApplicationRecord
+end

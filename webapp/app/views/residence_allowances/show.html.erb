@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Residence type:</strong>
+  <%= @residence_allowance.residence_type %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @residence_allowance.price %>
+</p>
+
+<%= link_to 'Edit', edit_residence_allowance_path(@residence_allowance) %> |
+<%= link_to 'Back', residence_allowances_path %>
