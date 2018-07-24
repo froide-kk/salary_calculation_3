@@ -1,2 +1,0 @@
-module UserSHelper
-end

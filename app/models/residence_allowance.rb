@@ -1,2 +1,0 @@
-class ResidenceAllowance < ApplicationRecord
-end

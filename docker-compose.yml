@@ -19,9 +19,6 @@ services:
       - ./environments/db.env
     volumes:
       - db-data:/var/lib/mysql
-    environment:
-      - MYSQL_USER=chorong
-      - MYSQL_PASSWORD=8973
   web:
     build:
       context: containers/nginx

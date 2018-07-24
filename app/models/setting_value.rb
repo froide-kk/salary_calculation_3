@@ -1,2 +1,0 @@
-class SettingValue < ApplicationRecord
-end
