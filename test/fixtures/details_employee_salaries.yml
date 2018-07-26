@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  personal_information_id: 1
+  face_salary: 1
+  minus_salary: 1
+  promotion_rate: 1.5
+  base_salary: 1
+  basic_pay: MyString
+  time_unit_price: 1
+  fixed_extra_task_time: 1
+  fixed_overtime: 1
+  job_ability_grade: 1
+  duty_allowance: 1
+  duty_allowance_task: 1
+  fixed_allowance: 1
+  half_year_salary: 1
+  last_years_hourly: 1
+  hourly_difference: 1
+  hourly_difference_percent: 1.5
+
+two:
+  personal_information_id: 1
+  face_salary: 1
+  minus_salary: 1
+  promotion_rate: 1.5
+  base_salary: 1
+  basic_pay: MyString
+  time_unit_price: 1
+  fixed_extra_task_time: 1
+  fixed_overtime: 1
+  job_ability_grade: 1
+  duty_allowance: 1
+  duty_allowance_task: 1
+  fixed_allowance: 1
+  half_year_salary: 1
+  last_years_hourly: 1
+  hourly_difference: 1
+  hourly_difference_percent: 1.5

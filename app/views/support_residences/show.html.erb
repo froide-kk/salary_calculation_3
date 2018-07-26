@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Personal information:</strong>
+  <%= @support_residence.personal_information_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @support_residence.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @support_residence.price %>
+</p>
+
+<p>
+  <strong>Start month:</strong>
+  <%= @support_residence.start_month %>
+</p>
+
+<%= link_to 'Edit', edit_support_residence_path(@support_residence) %> |
+<%= link_to 'Back', support_residences_path %>

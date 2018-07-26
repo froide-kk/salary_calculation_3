@@ -1,0 +1,41 @@
+#departments
+sudo docker-compose exec app rails generate scaffold department name:string
+
+#logins
+sudo docker-compose exec app rails generate scaffold login user_id:string user_pw:string
+
+#setting_values
+sudo docker-compose exec app rails generate scaffold setting_value name:string value:float year:date
+
+#adjustments
+sudo docker-compose exec app rails generate scaffold adjustment personal_information_id:integer adjustment_type_id:integer count:integer date:date
+
+#adjustment_types
+sudo docker-compose exec app rails generate scaffold adjustment_type name:string value:string hint:text
+
+#age_groups
+sudo docker-compose exec app rails generate scaffold age_group personal_information_id:integer age:integer age_point:integer age_adjustment:integer date:date
+
+#residences
+sudo docker-compose exec app rails generate scaffold residence name:string price:integer
+
+#support_residences
+sudo docker-compose exec app rails generate scaffold support_residence personal_information_id:integer name:string price:integer start_month:date
+
+#members
+sudo docker-compose exec app rails generate scaffold member personal_information_id:integer member_type_id:integer count:integer date:date
+
+#member_types
+sudo docker-compose exec app rails generate scaffold member_type name:string price:integer
+
+#tasks
+sudo docker-compose exec app rails generate scaffold task name:string price:integer
+
+#position_grades
+sudo docker-compose exec app rails generate scaffold position_grade name:string job_ability_grade:integer task_time:integer task_grade:integer base_age:integer add_amount:integer
+
+#personal_informations
+sudo docker-compose exec app rails generate scaffold personal_information employee_id:integer name:string department_id:integer position_grade_id:integer task_id:integer birth:string age_group_id:integer insurance:string residence_id:integer join_date:date date:date
+
+#detail_employee_salarys
+sudo docker-compose exec app rails generate scaffold details_employee_salary personal_information_id:integer face_salary:integer minus_salary:integer promotion_rate:float base_salary:integer basic_pay:string time_unit_price:integer fixed_extra_task_time:integer fixed_overtime:integer job_ability_grade:integer duty_allowance:integer duty_allowance_task:integer fixed_allowance:integer half_year_salary:integer last_years_hourly:integer hourly_difference:integer hourly_difference_percent:float

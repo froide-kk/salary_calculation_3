@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  job_ability_grade: 1
+  task_time: 1
+  task_grade: 1
+  base_age: 1
+  add_amount: 1
+
+two:
+  name: MyString
+  job_ability_grade: 1
+  task_time: 1
+  task_grade: 1
+  base_age: 1
+  add_amount: 1

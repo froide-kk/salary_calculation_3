@@ -1,0 +1,47 @@
+<%= form_with(model: position_grade, local: true) do |form| %>
+  <% if position_grade.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(position_grade.errors.count, "error") %> prohibited this position_grade from being saved:</h2>
+
+      <ul>
+      <% position_grade.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_ability_grade %>
+    <%= form.number_field :job_ability_grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :task_time %>
+    <%= form.number_field :task_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :task_grade %>
+    <%= form.number_field :task_grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :base_age %>
+    <%= form.number_field :base_age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :add_amount %>
+    <%= form.number_field :add_amount %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

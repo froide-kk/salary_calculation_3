@@ -1,0 +1,102 @@
+<%= form_with(model: details_employee_salary, local: true) do |form| %>
+  <% if details_employee_salary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(details_employee_salary.errors.count, "error") %> prohibited this details_employee_salary from being saved:</h2>
+
+      <ul>
+      <% details_employee_salary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :personal_information_id %>
+    <%= form.number_field :personal_information_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :face_salary %>
+    <%= form.number_field :face_salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :minus_salary %>
+    <%= form.number_field :minus_salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :promotion_rate %>
+    <%= form.text_field :promotion_rate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :base_salary %>
+    <%= form.number_field :base_salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :basic_pay %>
+    <%= form.text_field :basic_pay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :time_unit_price %>
+    <%= form.number_field :time_unit_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fixed_extra_task_time %>
+    <%= form.number_field :fixed_extra_task_time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fixed_overtime %>
+    <%= form.number_field :fixed_overtime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :job_ability_grade %>
+    <%= form.number_field :job_ability_grade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duty_allowance %>
+    <%= form.number_field :duty_allowance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duty_allowance_task %>
+    <%= form.number_field :duty_allowance_task %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fixed_allowance %>
+    <%= form.number_field :fixed_allowance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :half_year_salary %>
+    <%= form.number_field :half_year_salary %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_years_hourly %>
+    <%= form.number_field :last_years_hourly %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hourly_difference %>
+    <%= form.number_field :hourly_difference %>
+  </div>
+
+  <div class="field">
+    <%= form.label :hourly_difference_percent %>
+    <%= form.text_field :hourly_difference_percent %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

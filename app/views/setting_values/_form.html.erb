@@ -1,0 +1,32 @@
+<%= form_with(model: setting_value, local: true) do |form| %>
+  <% if setting_value.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(setting_value.errors.count, "error") %> prohibited this setting_value from being saved:</h2>
+
+      <ul>
+      <% setting_value.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.date_select :year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

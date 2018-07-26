@@ -1,0 +1,37 @@
+<%= form_with(model: support_residence, local: true) do |form| %>
+  <% if support_residence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(support_residence.errors.count, "error") %> prohibited this support_residence from being saved:</h2>
+
+      <ul>
+      <% support_residence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :personal_information_id %>
+    <%= form.number_field :personal_information_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_month %>
+    <%= form.date_select :start_month %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

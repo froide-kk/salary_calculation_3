@@ -1,0 +1,2 @@
+class SupportResidence < ApplicationRecord
+end

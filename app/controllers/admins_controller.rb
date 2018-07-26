@@ -1,11 +1,25 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
+  # GET /admins/wage
+  # GET /admins/wage.json
+  def wage
+  end
+
+  # GET /admins/history
+  # GET /admins/history.json
+  def history
+  end
+
+  # GET /admins/setting
+  # GET /admins/setting.json
+  def setting
+    @setting_values = SettingValue.all
+  end
+
   # GET /admins
   # GET /admins.json
   def index
-    @admins = Admin.all
-    @tasks = Task.all
   end
 
   # GET /admins/1
@@ -72,4 +86,7 @@ class AdminsController < ApplicationController
     def admin_params
       params.fetch(:admin, {})
     end
+
+
+
 end

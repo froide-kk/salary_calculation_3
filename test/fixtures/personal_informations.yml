@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  employee_id: 1
+  name: MyString
+  department_id: 1
+  position_grade_id: 1
+  task_id: 1
+  birth: MyString
+  age_group_id: 1
+  insurance: MyString
+  residence_id: 1
+  join_date: 2018-07-26
+  date: 2018-07-26
+
+two:
+  employee_id: 1
+  name: MyString
+  department_id: 1
+  position_grade_id: 1
+  task_id: 1
+  birth: MyString
+  age_group_id: 1
+  insurance: MyString
+  residence_id: 1
+  join_date: 2018-07-26
+  date: 2018-07-26

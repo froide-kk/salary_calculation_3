@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Personal information:</strong>
+  <%= @adjustment.personal_information_id %>
+</p>
+
+<p>
+  <strong>Adjustment type:</strong>
+  <%= @adjustment.adjustment_type_id %>
+</p>
+
+<p>
+  <strong>Count:</strong>
+  <%= @adjustment.count %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @adjustment.date %>
+</p>
+
+<%= link_to 'Edit', edit_adjustment_path(@adjustment) %> |
+<%= link_to 'Back', adjustments_path %>
