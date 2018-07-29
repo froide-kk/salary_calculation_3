@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_171113) do
+ActiveRecord::Schema.define(version: 2018_07_28_172809) do
 
   create_table "adjustment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -22,11 +22,12 @@ ActiveRecord::Schema.define(version: 2018_07_26_171113) do
 
   create_table "adjustments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "personal_information_id"
-    t.integer "adjustment_type_id"
+    t.bigint "adjustment_type_id", null: false
     t.integer "count"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["adjustment_type_id"], name: "fk_rails_b9e1078207"
   end
 
   create_table "age_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -45,8 +46,8 @@ ActiveRecord::Schema.define(version: 2018_07_26_171113) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "details_employee_salaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "personal_information_id"
+  create_table "detail_employee_salaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "personal_information_id", null: false
     t.integer "face_salary"
     t.integer "minus_salary"
     t.float "promotion_rate"
@@ -65,6 +66,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_171113) do
     t.float "hourly_difference_percent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["personal_information_id"], name: "fk_rails_bbea969dda"
   end
 
   create_table "logins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -83,27 +85,32 @@ ActiveRecord::Schema.define(version: 2018_07_26_171113) do
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "personal_information_id"
-    t.integer "member_type_id"
+    t.bigint "member_type_id", null: false
     t.integer "count"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["member_type_id"], name: "fk_rails_9a10de6ee1"
   end
 
   create_table "personal_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "employee_id"
     t.string "name"
-    t.integer "department_id"
-    t.integer "position_grade_id"
-    t.integer "task_id"
+    t.bigint "department_id", null: false
+    t.bigint "position_grade_id", null: false
+    t.bigint "task_id", null: false
     t.string "birth"
-    t.integer "age_group_id"
+    t.integer "age"
     t.string "insurance"
-    t.integer "residence_id"
+    t.bigint "residence_id", null: false
     t.date "join_date"
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "fk_rails_4707a94278"
+    t.index ["position_grade_id"], name: "fk_rails_144a4e0141"
+    t.index ["residence_id"], name: "fk_rails_51eaccbbf6"
+    t.index ["task_id"], name: "fk_rails_9d834a81e2"
   end
 
   create_table "position_grades", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -148,4 +155,31 @@ ActiveRecord::Schema.define(version: 2018_07_26_171113) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "web_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "web_personals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "web_settings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "web_wages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "adjustments", "adjustment_types"
+  add_foreign_key "detail_employee_salaries", "personal_informations"
+  add_foreign_key "members", "member_types"
+  add_foreign_key "personal_informations", "departments"
+  add_foreign_key "personal_informations", "position_grades"
+  add_foreign_key "personal_informations", "residences"
+  add_foreign_key "personal_informations", "tasks"
 end

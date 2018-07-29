@@ -1,0 +1,16 @@
+add_foreign_key :articles, :users, column: :author_id, primary_key: "lng_id"
+
+#adjustments
+add_foreign_key :detail_employee_salaries, :personal_informations, column: :personal_information_id
+
+#adjustments
+add_foreign_key :adjustments, :adjustment_types, column: :adjustment_type_id
+
+#members
+add_foreign_key :members, :member_types, column: :members_type_id
+
+#personal_informations
+add_foreign_key :personal_informations, :departments, column: :department_id
+add_foreign_key :personal_informations, :position_grades, column: :position_grade_id
+add_foreign_key :personal_informations, :tasks, column: :task_id
+add_foreign_key :personal_informations, :residences, column: :residence_id

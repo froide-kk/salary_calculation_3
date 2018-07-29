@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>給与管理システム</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+  <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+    <div class="sidebar-wrapper">
+          <div class="logo">
+              <a href="http://www.creative-tim.com" class="simple-text">
+                  賃金管理者
+              </a>
+          </div>
+
+          <ul class="nav">
+              <li>
+                <%= link_to "/admin/personal", method: :get  do %>
+                      <i class="pe-7s-user"></i>
+                      <p>身分管理</p>
+                  </a>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "/admin/wage", method: :get  do %>
+                      <i class="pe-7s-news-paper"></i>
+                      <p>給与管理</p>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "/admin/history", method: :get  do %>
+                      <i class="pe-7s-note2"></i>
+                      <p>履歴管理</p>
+                  </a>
+                <% end %>
+              </li>
+
+              <li class="active-pro">
+                <%= link_to "/admin/setting", method: :get  do %>
+                      <i class="pe-7s-science"></i>
+                      <p>設定</p>
+                  </a>
+                <% end %>
+              </li>
+          </ul>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="main-panel">
+		     <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">設定</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">設定</h4>
+                                <p class="category">Here is a "設定" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>名</th>
+                                    	<th>値打ち</th>
+                                    	<th>データ</th>
+                                      <th></th>
+                                      <th></th>
+                                    </thead>
+                                    <tbody>
+																			<% @setting_values.each do |setting_value|
+                                      %>
+                                        <tr>
+                                          <td><%= t :"#{setting_value.name}" %></td>
+                                          <td><%= setting_value.value %></td>
+                                          <td><%= setting_value.year %></td>
+                                          <td><%= link_to 'Edit', edit_setting_value_path(setting_value) %></td>
+                                          <td><%= link_to 'Destroy', setting_value, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                        </tr>
+																			<% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_setting_value_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Setting Value</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">職位別手当</h4>
+                                <p class="category">Here is a "職位別手当" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>職位名</th>
+                                    	<th>社員の職能給手当</th>
+                                    	<th>みなし残業</th>
+                                      <th>役職給</th>
+                                      <th>基準年齢</th>
+                                      <th>増額分</th>
+                                      <th></th>
+                                    </thead>
+                                    <tbody>
+																			<% @position_grades.each do |position_grade|
+                                      %>
+                                        <tr>
+                                          <td><%= position_grade.name %></td>
+                                          <td><%= position_grade.job_ability_grade %></td>
+                                          <td><%= position_grade.task_time %></td>
+                                          <td><%= position_grade.task_grade %></td>
+                                          <td><%= position_grade.base_age %></td>
+                                          <td><%= position_grade.add_amount %></td>
+                                          <td><%= link_to 'Edit', edit_position_grade_path(position_grade) %></td>
+                                        </tr>
+																			<% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_position_grade_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Position Grade</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">職種</h4>
+                                <p class="category">Here is a "職種" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>職種名</th>
+                                    	<th>職種の手当</th>
+                                      <th></th>
+                                  </thead>
+                                    <tbody>
+																			<% @tasks.each do |task|
+                                      %>
+                                        <tr>
+                                          <td><%= task.name %></td>
+                                          <td><%= task.price %></td>
+                                          <td><%= link_to 'Edit', edit_task_path(task) %></td>
+                                        </tr>
+																			<% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_task_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Task</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">家族形態</h4>
+                                <p class="category">Here is a "家族形態" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>家族の形（配偶者、子供）</th>
+                                      <th>家族の形態の手当</th>
+                                      <th></th>
+                                  </thead>
+                                    <tbody>
+                                      <% @member_types.each do |member_type|
+                                      %>
+                                        <tr>
+                                          <td><%= member_type.name %></td>
+                                          <td><%= member_type.price %></td>
+                                          <td><%= link_to 'Edit', edit_member_type_path(member_type) %></td>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_member_type_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Member Type</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">住居手当</h4>
+                                <p class="category">Here is a "住居手当" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>居住地の名前</th>
+                                    	<th>住居の手当</th>
+                                      <th></th>
+                                  </thead>
+                                    <tbody>
+																			<% @residences.each do |residence|
+                                      %>
+                                        <tr>
+                                          <td><%= residence.name %></td>
+                                          <td><%= residence.price %></td>
+                                          <td><%= link_to 'Edit', edit_residence_path(residence) %></td>
+                                        </tr>
+																			<% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_residence_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Residence</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">給与管理</h4>
+                                <p class="category">Here is a "給与管理" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>調整可能な値名</th>
+                                      <th>名別調整値</th>
+                                      <th>調整値の理由</th>
+                                      <th></th>
+                                    </thead>
+                                    <tbody>
+                                      <% @adjustment_types.each do |adjustment_type|
+                                      %>
+                                        <tr>
+                                          <td><%= adjustment_type.name %></td>
+                                          <td><%= adjustment_type.value %></td>
+                                          <td><%= adjustment_type.hint %></td>
+                                          <td><%= link_to 'Edit', edit_adjustment_type_path(adjustment_type) %></td>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_adjustment_type_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Adjustment Type</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">部署</h4>
+                                <p class="category">Here is a "部署" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>部署名前</th>
+                                      <th></th>
+                                    </thead>
+                                    <tbody>
+																			<% @departments.each do |department|
+                                      %>
+                                        <tr>
+                                          <td><%= department.name %></td>
+                                          <td><%= link_to 'Edit', edit_department_path(department) %></td>
+                                        </tr>
+																			<% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_department_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Department</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">使用者</h4>
+                                <p class="category">Here is a "使用者" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>使用者 ID</th>
+                                    	<th>使用者 PW</th>
+                                      <th></th>
+                                      <th></th>
+                                  </thead>
+                                    <tbody>
+																			<% @logins.each do |login|
+                                      %>
+                                        <tr>
+                                          <td><%= login.user_id %></td>
+                                          <td><%= login.user_pw %></td>
+                                          <td><%= link_to 'Edit', edit_login_path(login) %></td>
+                                          <td><%= link_to 'Destroy', login, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                                        </tr>
+																			<% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to new_login_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New User</button>
+                        <% end %>
+                        <br /><br /><br /><br />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <%= link_to "/admin/setting", method: :get  do %>
+                                設定
+                            <% end %>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+
+
+    </div>
+</div>
+
+
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js key=YOUR_KEY_HERE"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+
+
+</html>

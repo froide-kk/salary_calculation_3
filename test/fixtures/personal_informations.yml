@@ -3,25 +3,25 @@
 one:
   employee_id: 1
   name: MyString
-  department_id: 1
-  position_grade_id: 1
-  task_id: 1
+  department_id: 
+  position_grade_id: 
+  task_id: 
   birth: MyString
   age_group_id: 1
   insurance: MyString
-  residence_id: 1
-  join_date: 2018-07-26
-  date: 2018-07-26
+  residence_id: 
+  join_date: 2018-07-28
+  date: 2018-07-28
 
 two:
   employee_id: 1
   name: MyString
-  department_id: 1
-  position_grade_id: 1
-  task_id: 1
+  department_id: 
+  position_grade_id: 
+  task_id: 
   birth: MyString
   age_group_id: 1
   insurance: MyString
-  residence_id: 1
-  join_date: 2018-07-26
-  date: 2018-07-26
+  residence_id: 
+  join_date: 2018-07-28
+  date: 2018-07-28

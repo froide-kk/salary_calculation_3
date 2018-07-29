@@ -1,0 +1,2 @@
+class WebWage < ApplicationRecord
+end

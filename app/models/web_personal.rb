@@ -1,0 +1,2 @@
+class WebPersonal < ApplicationRecord
+end

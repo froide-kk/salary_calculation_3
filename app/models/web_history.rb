@@ -1,0 +1,2 @@
+class WebHistory < ApplicationRecord
+end

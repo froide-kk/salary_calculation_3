@@ -12,7 +12,7 @@
 		<nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">設定</a>
+                    <a class="navbar-brand">設定</a>
                 </div>
             </div>
         </nav>
@@ -46,6 +46,9 @@
                                 </table>
                             </div>
                         </div>
+                        <%= link_to "/admins/setting/edit", method: :get  do %>
+                        <button class="btn btn-default pull-right" >Edit</button>
+                        <% end %>
                     </div>
                 </div>
             </div>
@@ -56,9 +59,9 @@
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="#">
+                            <%= link_to "/admins/setting", method: :get  do %>
                                 設定
-                            </a>
+                            <% end %>
                         </li>
                     </ul>
                 </nav>

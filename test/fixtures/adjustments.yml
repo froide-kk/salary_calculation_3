@@ -2,12 +2,12 @@
 
 one:
   personal_information_id: 1
-  adjustment_type_id: 1
+  adjustment_type_id: 
   count: 1
-  date: 2018-07-26
+  date: 2018-07-28
 
 two:
   personal_information_id: 1
-  adjustment_type_id: 1
+  adjustment_type_id: 
   count: 1
-  date: 2018-07-26
+  date: 2018-07-28

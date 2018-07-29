@@ -12,7 +12,7 @@
 		<nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">履歴管理</a>
+                    <a class="navbar-brand">履歴管理</a>
                 </div>
             </div>
         </nav>
@@ -22,14 +22,14 @@
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="#">
+                            <%= link_to "/admins/history", method: :get  do %>
                                 年、月別、照会
-                            </a>
+                            <% end %>
                         </li>
                         <li>
-                            <a href="#">
+                            <%= link_to "/admins/history", method: :get  do %>
                                 個人シンサンの照会(PDF出力)
-                            </a>
+                            <% end %>
                         </li>
                     </ul>
                 </nav>

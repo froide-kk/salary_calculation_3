@@ -4,6 +4,7 @@ class AdminsController < ApplicationController
   # GET /admins/wage
   # GET /admins/wage.json
   def wage
+    @details_employee_salarys = DetailsEmployeeSalary.all
   end
 
   # GET /admins/history
@@ -17,9 +18,25 @@ class AdminsController < ApplicationController
     @setting_values = SettingValue.all
   end
 
-  # GET /admins
-  # GET /admins.json
-  def index
+  # GET /admins/setting/edit
+  def setting_edit
+    @setting_values = SettingValue.all
+  end
+
+  # GET /admin/basic_personal_info/
+  def basic_personal_info
+    @personal_informations = PersonalInformation.all
+  end
+
+  # GET /admins/index/2
+  def index2
+    @members = Member.all
+    @memberTypes = MemberType.all
+  end
+
+  # GET /admins/index/3
+  def index3
+    @personal_informations = PersonalInformation.all
   end
 
   # GET /admins/1

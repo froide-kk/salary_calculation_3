@@ -12,29 +12,131 @@
 		<nav class="navbar navbar-default navbar-fixed">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">給与管理</a>
+                    <a class="navbar-brand">給与管理</a>
                 </div>
             </div>
         </nav>
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Wage Management</h4>
+                                <p class="category">Here is a subtitle for "Wage Management" table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped">
+                                    <thead>
+                                      <th>番号</th>
+                                      <th>基本給</th>
+                                      <th>定額残業代</th>
+                                      <th>家族数 * 家族の形態の手当</th>
+                                      <th>額面給与</th>
+                                      <th>2018下期給与</th>
+                                    </thead>
+                                    <tbody>
+                                      <% @details_employee_salarys.each do |details_employee_salary|
+                                      %>
+                                        <tr>
+                                          <th><%= details_employee_salary.personal_information_id %></th>
+                                          <th><%= details_employee_salary.basic_pay %></th>
+                                          <th><%= details_employee_salary.fixed_overtime %></th>
+                                          <th>000</th>
+                                          <th><%= details_employee_salary.face_salary %></th>
+                                          <th><%= details_employee_salary.half_year_salary %></th>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <%= link_to "/admins/setting/edit", method: :get  do %>
+                        <button class="btn btn-default pull-right" >Edit</button>
+                        <% end %>
+                    </div>
 
+<!--
+                    <div class="col-md-12">
+                        <div class="card card-plain">
+                            <div class="header">
+                                <h4 class="title">Table on Plain Background</h4>
+                                <p class="category">Here is a subtitle for this table</p>
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover">
+                                    <thead>
+                                      <th>personal_information_id</th>
+                                      <th>face_salary</th>
+                                      <th>minus_salary</th>
+                                      <th>promotion_rate</th>
+                                      <th>base_salary</th>
+                                      <th>basic_pay</th>
+                                      <th>time_unit_price</th>
+                                      <th>fixed_extra_task_time</th>
+                                      <th>fixed_overtime</th>
+                                      <th>job_ability_grade</th>
+                                      <th>duty_allowance</th>
+                                      <th>duty_allowance_task</th>
+                                      <th>fixed_allowance</th>
+                                      <th>half_year_salary</th>
+                                      <th>last_years_hourly</th>
+                                      <th>hourly_difference</th>
+                                      <th>hourly_difference_percent</th>
+                                      <th>date</th>
+                                    </thead>
+                                    <tbody>
+                                      <% @details_employee_salarys.each do |details_employee_salary|
+                                      %>
+                                        <tr>
+                                          <td>personal_information_id</td>
+                                          <td>face_salary</td>
+                                          <td>minus_salary</td>
+                                          <td>promotion_rate</td>
+                                          <td>base_salary</td>
+                                          <td>basic_pay</td>
+                                          <td>time_unit_price</td>
+                                          <td>fixed_extra_task_time</td>
+                                          <td>fixed_overtime</td>
+                                          <td>job_ability_grade</td>
+                                          <td>duty_allowance</td>
+                                          <td>duty_allowance_task</td>
+                                          <td>fixed_allowance</td>
+                                          <td>half_year_salary</td>
+                                          <td>last_years_hourly</td>
+                                          <td>hourly_difference</td>
+                                          <td>hourly_difference_percent</td>
+                                          <td>date</td>
+                                        </tr>
+                                      <% end %>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+-->
+                </div>
+            </div>
+        </div>
         <footer class="footer">
             <div class="container-fluid">
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="#">
+                            <%= link_to "/admins/wage", method: :get  do %>
                                 給与管理
-                            </a>
+                            <% end %>
                         </li>
                         <li>
-                            <a href="#">
+                            <%= link_to "/admins/wage", method: :get  do %>
                                 年齢情報
-                            </a>
+                            <% end %>
                         </li>
                         <li>
-                            <a href="#">
+                            <%= link_to "/admins/wage", method: :get  do %>
                                 調整価格情報
-                            </a>
+                            <% end %>
                         </li>
                     </ul>
                 </nav>

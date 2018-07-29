@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>給与管理システム</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+  <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+  <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+    <div class="sidebar-wrapper">
+          <div class="logo">
+              <a href="http://www.creative-tim.com" class="simple-text">
+                  賃金管理者
+              </a>
+          </div>
+
+          <ul class="nav">
+              <li>
+                <%= link_to "/admin/personal", method: :get  do %>
+                      <i class="pe-7s-user"></i>
+                      <p>身分管理</p>
+                  </a>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "/admin/wage", method: :get  do %>
+                      <i class="pe-7s-news-paper"></i>
+                      <p>給与管理</p>
+                <% end %>
+              </li>
+              <li class="active">
+                <%= link_to "/admin/history", method: :get  do %>
+                      <i class="pe-7s-note2"></i>
+                      <p>履歴管理</p>
+                  </a>
+                <% end %>
+              </li>
+
+              <li class="active-pro">
+                <%= link_to "/admin/setting", method: :get  do %>
+                      <i class="pe-7s-science"></i>
+                      <p>設定</p>
+                  </a>
+                <% end %>
+              </li>
+          </ul>
+    </div>
+  </div>
+
+  <div class="wrapper">
+    <div class="main-panel">
+		    <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand">履歴管理</a>
+                </div>
+            </div>
+        </nav>
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <%= link_to "/admins/history", method: :get  do %>
+                                年、月別、照会
+                            <% end %>
+                        </li>
+                        <li>
+                            <%= link_to "/admins/history", method: :get  do %>
+                                個人シンサンの照会(PDF出力)
+                            <% end %>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <p class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
+                </p>
+            </div>
+        </footer>
+
+
+    </div>
+</div>
+
+
+</body>
+<!--   Core JS Files   -->
+<script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Charts Plugin -->
+<script src="assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js key=YOUR_KEY_HERE"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="assets/js/demo.js"></script>
+
+
+</html>

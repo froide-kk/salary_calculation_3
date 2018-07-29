@@ -8,7 +8,7 @@ sudo docker-compose exec app rails generate scaffold login user_id:string user_p
 sudo docker-compose exec app rails generate scaffold setting_value name:string value:float year:date
 
 #adjustments
-sudo docker-compose exec app rails generate scaffold adjustment personal_information_id:integer adjustment_type_id:integer count:integer date:date
+sudo docker-compose exec app rails generate scaffold adjustment personal_information_id:integer adjustment_type_id:bigint count:integer date:date
 
 #adjustment_types
 sudo docker-compose exec app rails generate scaffold adjustment_type name:string value:string hint:text
@@ -23,7 +23,7 @@ sudo docker-compose exec app rails generate scaffold residence name:string price
 sudo docker-compose exec app rails generate scaffold support_residence personal_information_id:integer name:string price:integer start_month:date
 
 #members
-sudo docker-compose exec app rails generate scaffold member personal_information_id:integer member_type_id:integer count:integer date:date
+sudo docker-compose exec app rails generate scaffold member personal_information_id:integer member_type_id:bigint count:integer date:date
 
 #member_types
 sudo docker-compose exec app rails generate scaffold member_type name:string price:integer
@@ -35,7 +35,7 @@ sudo docker-compose exec app rails generate scaffold task name:string price:inte
 sudo docker-compose exec app rails generate scaffold position_grade name:string job_ability_grade:integer task_time:integer task_grade:integer base_age:integer add_amount:integer
 
 #personal_informations
-sudo docker-compose exec app rails generate scaffold personal_information employee_id:integer name:string department_id:integer position_grade_id:integer task_id:integer birth:string age_group_id:integer insurance:string residence_id:integer join_date:date date:date
+sudo docker-compose exec app rails generate scaffold personal_information employee_id:integer name:string department_id:bigint position_grade_id:bigint task_id:bigint birth:string age_group_id:integer insurance:string residence_id:bigint join_date:date date:date
 
-#detail_employee_salarys
-sudo docker-compose exec app rails generate scaffold details_employee_salary personal_information_id:integer face_salary:integer minus_salary:integer promotion_rate:float base_salary:integer basic_pay:string time_unit_price:integer fixed_extra_task_time:integer fixed_overtime:integer job_ability_grade:integer duty_allowance:integer duty_allowance_task:integer fixed_allowance:integer half_year_salary:integer last_years_hourly:integer hourly_difference:integer hourly_difference_percent:float
+#detail_employee_salary
+sudo docker-compose exec app rails generate scaffold detail_employee_salary personal_information_id:integer face_salary:integer minus_salary:integer promotion_rate:float base_salary:integer basic_pay:string time_unit_price:integer fixed_extra_task_time:integer fixed_overtime:integer job_ability_grade:integer duty_allowance:integer duty_allowance_task:integer fixed_allowance:integer half_year_salary:integer last_years_hourly:integer hourly_difference:integer hourly_difference_percent:float
