@@ -56,7 +56,7 @@ class SettingValuesController < ApplicationController
   def destroy
     @setting_value.destroy
     respond_to do |format|
-      format.html { redirect_to setting_values_url, notice: 'Setting value was successfully destroyed.' }
+      format.html { redirect_to "/admin/setting", notice: 'Setting value was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

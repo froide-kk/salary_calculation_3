@@ -56,7 +56,7 @@ class LoginsController < ApplicationController
   def destroy
     @login.destroy
     respond_to do |format|
-      format.html { redirect_to logins_url, notice: 'Login was successfully destroyed.' }
+      format.html { redirect_to "/admin/setting", notice: 'Login was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

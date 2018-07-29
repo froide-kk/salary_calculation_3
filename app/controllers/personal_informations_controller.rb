@@ -56,7 +56,7 @@ class PersonalInformationsController < ApplicationController
   def destroy
     @personal_information.destroy
     respond_to do |format|
-      format.html { redirect_to personal_informations_url, notice: 'Personal information was successfully destroyed.' }
+      format.html { redirect_to "/admin/personal/basic_personal_info", notice: 'Personal information was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

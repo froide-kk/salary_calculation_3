@@ -56,7 +56,7 @@ class SupportResidencesController < ApplicationController
   def destroy
     @support_residence.destroy
     respond_to do |format|
-      format.html { redirect_to support_residences_url, notice: 'Support residence was successfully destroyed.' }
+      format.html { redirect_to "/admin/personal/monthly_rent_support_info", notice: 'Support residence was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

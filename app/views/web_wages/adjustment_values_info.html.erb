@@ -86,8 +86,8 @@
                       <div class="col-md-12">
                           <div class="card">
                               <div class="header">
-                                  <h4 class="title">給与管理</h4>
-                                  <p class="category">Here is a "給与管理" table. 追加、修正は設定のテーブルでできます。</p>
+                                  <h4 class="title">調整タイプ</h4>
+                                  <p class="category">Here is a master table. 追加、修正は設定のテーブルでできます。</p>
                               </div>
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover table-striped">
@@ -114,8 +114,8 @@
                       <div class="col-md-12">
                           <div class="card card-plain">
                               <div class="header">
-                                  <h4 class="title">給与管理</h4>
-                                  <p class="category">Here is a "給与管理" table</p>
+                                  <h4 class="title">調整値</h4>
+                                  <p class="category">Here is a "調整値" table</p>
                               </div>
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover">
@@ -124,6 +124,7 @@
                                         <th>調整可能な値名</th>
                                         <th>調整値の数</th>
                                         <th>データ作成月</th>
+                                        <th></th>
                                       </thead>
                                       <tbody>
                                         <% @adjustments.each do |adjustment|
@@ -133,13 +134,16 @@
                                             <td><%= adjustment.adjustment_type.name %></td>
                                             <td><%= adjustment.count %></td>
                                             <td><%= adjustment.created_at %></td>
+                                            <td><%= link_to 'Edit', edit_adjustment_path(adjustment) %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>
                                   </table>
-
                               </div>
                           </div>
+                          <%= link_to new_adjustment_path, method: :get do %>
+                          <button class="btn btn-default pull-right" >New Employee Adjustment</button>
+                          <% end %>
                       </div>
 
                   </div>

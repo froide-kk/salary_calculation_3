@@ -86,8 +86,8 @@
                       <div class="col-md-12">
                           <div class="card">
                               <div class="header">
-                                  <h4 class="title">給与管理</h4>
-                                  <p class="category">Here is a "給与管理" table</p>
+                                  <h4 class="title">総合給与管理</h4>
+                                  <p class="category">Here is a "総合給与管理" table.  五つのデータとともに社員の簡単な給与情報を見ることができます。</p>
                               </div>
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover table-striped">
@@ -98,6 +98,7 @@
                                         <th>家族数 * 家族の形態の手当</th>
                                         <th>額面給与</th>
                                         <th>2018下期給与</th>
+                                        <th>データ作成月</th>
                                       </thead>
                                       <tbody>
                                         <% @detail_employee_salarys.each do |detail_employee_salary|
@@ -109,6 +110,7 @@
                                             <td>000</td>
                                             <td><%= detail_employee_salary.face_salary %></td>
                                             <td><%= detail_employee_salary.half_year_salary %></td>
+                                            <td><%= detail_employee_salary.updated_at %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>
@@ -120,29 +122,45 @@
                       <div class="col-md-12">
                           <div class="card card-plain">
                               <div class="header">
-                                  <h4 class="title">給与管理</h4>
-                                  <p class="category">Here is a "給与管理" table</p>
+                                  <h4 class="title">詳細給与管理</h4>
+                                  <p class="category">Here is a "詳細給与管理" table.  上のテーブルの情報以外の詳細情報を見ることができます。</p>
                               </div>
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover">
                                       <thead>
                                         <th>社員の名</th>
-                                        <th>基本給</th>
-                                        <th>定額残業代</th>
-                                        <th>家族数 * 家族の形態の手当</th>
-                                        <th>額面給与</th>
-                                        <th>2018下期給与</th>
+                                        <th>差額</th>
+                                        <th>昇給率</th>
+                                        <th>基準給与</th>
+                                        <th>時間単価</th>
+                                        <th>定額残業時間</th>
+                                        <th>職能給(基準)</th>
+                                        <th>役職手当</th>
+                                        <th>職務手当</th>
+                                        <th>精勤手当</th>
+                                        <th>昨年時給</th>
+                                        <th>時給差額</th>
+                                        <th>時給差額パーセント</th>
+                                        <th>データ作成月</th>
                                       </thead>
                                       <tbody>
                                         <% @detail_employee_salarys.each do |detail_employee_salary|
                                         %>
                                           <tr>
                                             <td><%= detail_employee_salary.personal_information.name %></td>
-                                            <td><%= detail_employee_salary.basic_pay %></td>
-                                            <td><%= detail_employee_salary.fixed_overtime %></td>
-                                            <td>000</td>
-                                            <td><%= detail_employee_salary.face_salary %></td>
-                                            <td><%= detail_employee_salary.half_year_salary %></td>
+                                            <td><%= detail_employee_salary.minus_salary %></td>
+                                            <td><%= detail_employee_salary.promotion_rate %></td>
+                                            <td><%= detail_employee_salary.base_salary %></td>
+                                            <td><%= detail_employee_salary.time_unit_price %></td>
+                                            <td><%= detail_employee_salary.fixed_extra_task_time %></td>
+                                            <td><%= detail_employee_salary.job_ability_grade %></td>
+                                            <td><%= detail_employee_salary.duty_allowance %></td>
+                                            <td><%= detail_employee_salary.duty_allowance_task %></td>
+                                            <td><%= detail_employee_salary.fixed_allowance %></td>
+                                            <td><%= detail_employee_salary.last_years_hourly %></td>
+                                            <td><%= detail_employee_salary.hourly_difference %></td>
+                                            <td><%= detail_employee_salary.hourly_difference_percent %></td>
+                                            <td><%= detail_employee_salary.updated_at %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>

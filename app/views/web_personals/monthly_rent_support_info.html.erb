@@ -96,6 +96,8 @@
                                       <th>居住地の名前</th>
                                       <th>住居の手当</th>
                                       <th>支援が始まった月</th>
+                                      <th></th>
+                                      <th></th>
                                     </thead>
                                     <tbody>
                                       <% @support_residences.each do |support_residence|
@@ -105,14 +107,16 @@
                                           <td><%= support_residence.name %></td>
                                           <td><%= support_residence.price %></td>
                                           <td><%= support_residence.start_month %></td>
+                                          <td><%= link_to 'Edit', edit_support_residence_path(support_residence) %></td>
+                                          <td><%= link_to 'Destroy', support_residence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                         </tr>
                                       <% end %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <%= link_to "/admins/setting/edit", method: :get  do %>
-                        <button class="btn btn-default pull-right" >Edit</button>
+                        <%= link_to new_support_residence_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Support Residence</button>
                         <% end %>
                     </div>
                 </div>

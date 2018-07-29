@@ -87,7 +87,7 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">家族形態</h4>
-                                <p class="category">Here is a "家族形態" table. 追加、修正は設定のテーブルでできます。</p>
+                                <p class="category">Here is a master table. 追加、修正は設定のテーブルでできます。</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -116,7 +116,7 @@
                         <div class="card">
                             <div class="header">
                                 <h4 class="title">家族手当</h4>
-                                <p class="category">Here is a "家族手当" table</p>
+                                <p class="category">Here is a "家族手当" table.  社員の情報を追加すれば、自動的にデフォルト値(count:0)が生成されます。</p>
                             </div>
                             <div class="content table-responsive table-full-width">
                                 <table class="table table-hover table-striped">
@@ -125,6 +125,7 @@
                                       <th>家族の形（配偶者、子供）</th>
                                       <th>家族数</th>
                                       <th>データ作成月</th>
+                                      <th></th>
                                     </thead>
                                     <tbody>
                                       <% @members.each do |member|
@@ -134,12 +135,16 @@
                                           <td><%= member.member_type.name %></td>
                                           <td><%= member.count %></td>
                                           <td><%= member.date %></td>
+                                          <td><%= link_to 'Edit', edit_member_path(member) %></td>
                                         </tr>
                                       <% end %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        <%= link_to new_member_path, method: :get do %>
+                        <button class="btn btn-default pull-right" >New Family Info</button>
+                        <% end %>
                     </div>
                 </div>
             </div>

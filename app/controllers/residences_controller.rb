@@ -56,7 +56,7 @@ class ResidencesController < ApplicationController
   def destroy
     @residence.destroy
     respond_to do |format|
-      format.html { redirect_to residences_url, notice: 'Residence was successfully destroyed.' }
+      format.html { redirect_to "/admin/setting", notice: 'Residence was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

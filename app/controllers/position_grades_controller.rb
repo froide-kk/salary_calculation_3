@@ -56,7 +56,7 @@ class PositionGradesController < ApplicationController
   def destroy
     @position_grade.destroy
     respond_to do |format|
-      format.html { redirect_to position_grades_url, notice: 'Position grade was successfully destroyed.' }
+      format.html { redirect_to "/admin/setting", notice: 'Position grade was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

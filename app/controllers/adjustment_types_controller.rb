@@ -56,7 +56,7 @@ class AdjustmentTypesController < ApplicationController
   def destroy
     @adjustment_type.destroy
     respond_to do |format|
-      format.html { redirect_to adjustment_types_url, notice: 'Adjustment type was successfully destroyed.' }
+      format.html { redirect_to "/admin/setting", notice: 'Adjustment type was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

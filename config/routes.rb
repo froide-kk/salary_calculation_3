@@ -29,8 +29,6 @@ Rails.application.routes.draw do
   get '/admin/personal/family_info', to: 'web_personals#family_info'
   get '/admin/personal/monthly_rent_support_info', to: 'web_personals#monthly_rent_support_info'
 
-  get '/admin/personal/basic_personal_info', to: 'web_personals#basic_personal_info'
-
   get '/admin/wage', to: 'web_wages#wage_management'
   get '/admin/wage/wage_management', to: 'web_wages#wage_management'
   get '/admin/wage/age_info', to: 'web_wages#age_info'

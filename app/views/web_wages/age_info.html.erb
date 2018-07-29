@@ -8,8 +8,9 @@
     var birth_string;
     var year, month, day, birthday;
     var today;
-    var years;
-    function age(birth){
+    var age;
+
+    function age_print(birth){
       birth_string = ""+birth;
       year = birth_string.substr(0,4);
       month = birth_string.substr(4,2);
@@ -18,13 +19,76 @@
       birthday = new Date(year, month, day);
       today = new Date();
 
-      years = today.getFullYear() - birthday.getFullYear();
+      age = today.getFullYear() - birthday.getFullYear();
 
       birthday.setFullYear(today.getFullYear());
 
-      if (today < birthday) years--;
+      if (today < birthday) age--;
+      document.write('<td>'+ age +'</td>');
+    }
 
-      document.write( '<td>'+ years +'</td>' );
+    var age_standard;
+    function age_point_print(birth, base_age){
+      birth_string = ""+birth;
+      year = birth_string.substr(0,4);
+      month = birth_string.substr(4,2);
+      day = birth_string.substr(6,2);
+
+      birthday = new Date(year, month, day);
+      today = new Date();
+
+      age = today.getFullYear() - birthday.getFullYear();
+
+      birthday.setFullYear(today.getFullYear());
+
+      if (today < birthday) age--;
+
+      age_standard = age;
+      if(age_standard > 42){
+        age_standard = 42;
+      }
+      document.write('<td>'+(age_standard - base_age)+'</td>');
+    }
+
+    var age_point;
+    var age_adjustment_value;
+    function age_adjustment_value_print(birth, base_age, price){
+      birth_string = ""+birth;
+      year = birth_string.substr(0,4);
+      month = birth_string.substr(4,2);
+      day = birth_string.substr(6,2);
+
+      birthday = new Date(year, month, day);
+      today = new Date();
+
+      age = today.getFullYear() - birthday.getFullYear();
+
+      birthday.setFullYear(today.getFullYear());
+
+      if (today < birthday) age--;
+
+      age_standard = age;
+      if(age_standard > 42){
+        age_standard = 42;
+      }
+      age_point = age_standard - base_age;
+
+      if(price==0){
+        age_adjustment_value = 0;
+      }
+      else if(age_point>10){
+        age_adjustment_value = 10;
+      }
+      else if(age_point<=10){
+        age_adjustment_value = age_point;
+      }
+      else if(age_point<-10){
+        age_adjustment_value = -10;
+      }
+      else if(age_point>=-10){
+        age_adjustment_value = age_point;
+      }
+      document.write('<td>'+age_adjustment_value+'</td>');
     }
   </script>
 </head>
@@ -109,8 +173,8 @@
                       <div class="col-md-12">
                           <div class="card">
                               <div class="header">
-                                  <h4 class="title">給与管理</h4>
-                                  <p class="category">Here is a "給与管理" table</p>
+                                  <h4 class="title">年齢情報</h4>
+                                  <p class="category">Here is a "年齢情報" table</p>
                               </div>
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover table-striped">
@@ -124,9 +188,9 @@
                                         <% @personal_informations.each do |personal_information| %>
                                           <tr>
                                             <td><%= personal_information.name %></td>
-                                            <script>age(<%= personal_information.birth %>);</script>
-                                            <td>$ age_point</td>
-                                            <td>$ age_adjustment_value</td>
+                                            <script>age_print(<%= personal_information.birth %>);</script>
+                                            <script>age_point_print(<%= personal_information.birth %>, <%= personal_information.position_grade.base_age %>);</script>
+                                            <script>age_adjustment_value_print(<%= personal_information.birth %>, <%= personal_information.position_grade.base_age %>, <%= personal_information.task.price %>);</script>
                                           </tr>
                                         <% end %>
                                       </tbody>

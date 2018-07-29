@@ -56,7 +56,7 @@ class MemberTypesController < ApplicationController
   def destroy
     @member_type.destroy
     respond_to do |format|
-      format.html { redirect_to member_types_url, notice: 'Member type was successfully destroyed.' }
+      format.html { redirect_to "/admin/setting", notice: 'Member type was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
