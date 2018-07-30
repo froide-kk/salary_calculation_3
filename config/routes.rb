@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :web_logins
   resources :web_settings
   resources :web_histories
   resources :web_wages
@@ -23,7 +24,9 @@ Rails.application.routes.draw do
   resources :departments
 
   # delete '/tasks/:id', to: 'tasks#destroy'
-  get '/admin', to: 'web_personals#basic_personal_info'
+  get '/admin', to: 'web_logins#index'
+  get '/admin/login', to: 'web_logins#index'
+
   get '/admin/personal/', to: 'web_personals#basic_personal_info'
   get '/admin/personal/basic_personal_info', to: 'web_personals#basic_personal_info'
   get '/admin/personal/family_info', to: 'web_personals#family_info'

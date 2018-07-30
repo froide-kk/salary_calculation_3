@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_28_172809) do
+ActiveRecord::Schema.define(version: 2018_07_30_053329) do
 
   create_table "adjustment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_172809) do
   end
 
   create_table "adjustments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "personal_information_id"
+    t.string "employee_name"
     t.bigint "adjustment_type_id", null: false
     t.integer "count"
     t.date "date"
@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_172809) do
   end
 
   create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "personal_information_id"
+    t.string "employee_name"
     t.bigint "member_type_id", null: false
     t.integer "count"
     t.date "date"
@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(version: 2018_07_28_172809) do
   end
 
   create_table "support_residences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "personal_information_id"
+    t.string "employee_name"
     t.string "name"
     t.integer "price"
     t.date "start_month"
@@ -156,6 +156,11 @@ ActiveRecord::Schema.define(version: 2018_07_28_172809) do
   end
 
   create_table "web_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "web_logins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

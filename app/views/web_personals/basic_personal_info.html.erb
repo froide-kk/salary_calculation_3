@@ -29,54 +29,59 @@
   </script>
 </head>
 <body>
-  <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
-  <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
-    <div class="sidebar-wrapper">
-          <div class="logo">
-              <a href="http://www.creative-tim.com" class="simple-text">
-                  賃金管理者
-              </a>
-          </div>
-
-          <ul class="nav">
-              <li class="active">
-                <%= link_to "/admin/personal", method: :get  do %>
-                      <i class="pe-7s-user"></i>
-                      <p>身分管理</p>
-                  </a>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to "/admin/wage", method: :get  do %>
-                      <i class="pe-7s-news-paper"></i>
-                      <p>給与管理</p>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to "/admin/history", method: :get  do %>
-                      <i class="pe-7s-note2"></i>
-                      <p>履歴管理</p>
-                  </a>
-                <% end %>
-              </li>
-
-              <li class="active-pro">
-                <%= link_to "/admin/setting", method: :get  do %>
-                      <i class="pe-7s-science"></i>
-                      <p>設定</p>
-                  </a>
-                <% end %>
-              </li>
-          </ul>
-    </div>
-  </div>
-
   <div class="wrapper">
+      <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+      <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    賃金管理者
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                  <%= link_to "/admin/personal", method: :get  do %>
+                        <i class="pe-7s-user"></i>
+                        <p>身分管理</p>
+                    </a>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to "/admin/wage", method: :get  do %>
+                        <i class="pe-7s-news-paper"></i>
+                        <p>給与管理</p>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to "/admin/history", method: :get  do %>
+                        <i class="pe-7s-note2"></i>
+                        <p>履歴管理</p>
+                    </a>
+                  <% end %>
+                </li>
+
+                <li class="active-pro">
+                  <%= link_to "/admin/setting", method: :get  do %>
+                        <i class="pe-7s-science"></i>
+                        <p>設定</p>
+                    </a>
+                  <% end %>
+                </li>
+            </ul>
+        </div>
+      </div>
+
       <div class="main-panel">
       		<nav class="navbar navbar-default navbar-fixed">
                   <div class="container-fluid">
                       <div class="navbar-header">
-                          <a class="navbar-brand">身分管理</a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                          <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand">身分管理</a>
                       </div>
                   </div>
           </nav>
@@ -130,8 +135,7 @@
                                         <th></th>
                                       </thead>
                                       <tbody>
-                                        <% @personal_informations.each do |personal_information|
-                                        %>
+                                        <% @personal_informations.each do |personal_information| %>
                                           <tr>
                                             <td><%= personal_information.employee_id %></td>
                                             <td><%= personal_information.name %></td>
@@ -143,7 +147,7 @@
                                             <td><%= personal_information.insurance %></td>
                                             <td><%= personal_information.residence.name %></td>
                                             <td><%= personal_information.join_date %></td>
-                                            <td><%= personal_information.updated_at %></td>
+                                            <td><%= personal_information.updated_at.strftime('%Y-%m-%d') %></td>
                                             <td><%= link_to 'Edit', edit_personal_information_path(personal_information) %></td>
                                             <td><%= link_to 'Destroy', personal_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
                                           </tr>

@@ -53,6 +53,11 @@
       		<nav class="navbar navbar-default navbar-fixed">
               <div class="container-fluid">
                   <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
                       <a class="navbar-brand">給与管理</a>
                   </div>
               </div>
@@ -133,7 +138,7 @@
                                             <td><%= 'employee_name' %></td>
                                             <td><%= adjustment.adjustment_type.name %></td>
                                             <td><%= adjustment.count %></td>
-                                            <td><%= adjustment.created_at %></td>
+                                            <td><%= adjustment.created_at.strftime('%Y-%m-%d') %></td>
                                             <td><%= link_to 'Edit', edit_adjustment_path(adjustment) %></td>
                                           </tr>
                                         <% end %>

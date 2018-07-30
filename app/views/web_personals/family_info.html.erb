@@ -53,6 +53,11 @@
     		<nav class="navbar navbar-default navbar-fixed">
                 <div class="container-fluid">
                     <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
                         <a class="navbar-brand">身分管理</a>
                     </div>
                 </div>
@@ -131,10 +136,10 @@
                                       <% @members.each do |member|
                                       %>
                                         <tr>
-                                          <td><%= 'employee_name' %></td>
+                                          <td><%= member.employee_name %></td>
                                           <td><%= member.member_type.name %></td>
                                           <td><%= member.count %></td>
-                                          <td><%= member.updated_at %></td>
+                                          <td><%= member.updated_at.strftime('%Y-%m-%d') %></td>
                                           <td><%= link_to 'Edit', edit_member_path(member) %></td>
                                         </tr>
                                       <% end %>

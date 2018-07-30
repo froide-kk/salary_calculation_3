@@ -1,0 +1,2 @@
+class WebLogin < ApplicationRecord
+end

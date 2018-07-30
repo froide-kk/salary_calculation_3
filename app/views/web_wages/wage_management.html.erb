@@ -4,6 +4,28 @@
   <title>給与管理システム</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  <%
+  @setting_values.each do |setting_value|
+    if setting_value.name=='base_salary'
+      @base_salary = setting_value.value
+    end
+  end
+
+  @detail_employee_salarys.each do |detail_employee_salary|
+    @adjustments.each do |adjustment|
+      if detail_employee_salary.personal_information.name == adjustment.employee_name
+        if adjustment.adjustment_type.name == "shorter_working_hours"
+          if adjustment.count == 1
+            @base_salary = @base_salary* 0.75
+          end
+        end
+      end
+    end
+
+    @duty_allowance = detail_employee_salary.personal_information.position_grade.job_ability_grade
+  end
+  %>
 </head>
 <body>
   <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
@@ -53,6 +75,11 @@
       		<nav class="navbar navbar-default navbar-fixed">
               <div class="container-fluid">
                   <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
                       <a class="navbar-brand">給与管理</a>
                   </div>
               </div>
@@ -80,6 +107,8 @@
                   </nav>
               </div>
           </footer>
+          <div><%= "base_salary = " %><%= @base_salary %></div>
+          <div><%= "\n duty_allowance = " %><%= @duty_allowance %></div>
           <div class="content">
               <div class="container-fluid">
                   <div class="row">
@@ -101,8 +130,7 @@
                                         <th>データ作成月</th>
                                       </thead>
                                       <tbody>
-                                        <% @detail_employee_salarys.each do |detail_employee_salary|
-                                        %>
+                                        <% @detail_employee_salarys.each do |detail_employee_salary| %>
                                           <tr>
                                             <td><%= detail_employee_salary.personal_information.name %></td>
                                             <td><%= detail_employee_salary.basic_pay %></td>
@@ -110,7 +138,7 @@
                                             <td>000</td>
                                             <td><%= detail_employee_salary.face_salary %></td>
                                             <td><%= detail_employee_salary.half_year_salary %></td>
-                                            <td><%= detail_employee_salary.updated_at %></td>
+                                            <td><%= detail_employee_salary.updated_at.strftime('%Y-%m-%d') %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>
@@ -160,7 +188,7 @@
                                             <td><%= detail_employee_salary.last_years_hourly %></td>
                                             <td><%= detail_employee_salary.hourly_difference %></td>
                                             <td><%= detail_employee_salary.hourly_difference_percent %></td>
-                                            <td><%= detail_employee_salary.updated_at %></td>
+                                            <td><%= detail_employee_salary.updated_at.strftime('%Y-%m-%d') %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>

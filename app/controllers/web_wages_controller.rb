@@ -5,6 +5,8 @@ class WebWagesController < ApplicationController
   # GET /admin/wage/wage_management
   def wage_management
     @detail_employee_salarys = DetailEmployeeSalary.all
+    @setting_values = SettingValue.all
+    @adjustments = Adjustment.all
   end
 
   # GET /admin/wage/
