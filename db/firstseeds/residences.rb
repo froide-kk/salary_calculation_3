@@ -6,7 +6,7 @@ price: '0'
 )
 
 Residence.create(
-name: 'Dokyo',
+name: 'Tokyo',
 price: '50000'
 )
 

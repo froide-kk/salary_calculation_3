@@ -9,7 +9,7 @@ name: 'F-LABO'
 )
 
 Department.create(
-name: 'F-GROWTH'
+name: 'GROWTH'
 )
 
 Department.create(
