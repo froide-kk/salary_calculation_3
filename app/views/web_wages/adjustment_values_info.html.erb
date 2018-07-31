@@ -135,7 +135,7 @@
                                         <% @adjustments.each do |adjustment|
                                         %>
                                           <tr>
-                                            <td><%= 'employee_name' %></td>
+                                            <td><%= adjustment.employee_name %></td>
                                             <td><%= adjustment.adjustment_type.name %></td>
                                             <td><%= adjustment.count %></td>
                                             <td><%= adjustment.created_at.strftime('%Y-%m-%d') %></td>

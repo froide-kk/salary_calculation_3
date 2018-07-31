@@ -7,6 +7,10 @@ class WebHistoriesController < ApplicationController
   def annual_monthly_check
   end
 
+  # GET /admin/history/personal_info_pdf
+  def personal_info_pdf
+  end
+
   # GET /web_histories/1
   # GET /web_histories/1.json
   def show

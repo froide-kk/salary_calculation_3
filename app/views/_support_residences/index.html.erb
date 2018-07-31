@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Support Residences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Personal information</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Start month</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @support_residences.each do |support_residence| %>
+      <tr>
+        <td><%= support_residence.personal_information_id %></td>
+        <td><%= support_residence.name %></td>
+        <td><%= support_residence.price %></td>
+        <td><%= support_residence.start_month %></td>
+        <td><%= link_to 'Show', support_residence %></td>
+        <td><%= link_to 'Edit', edit_support_residence_path(support_residence) %></td>
+        <td><%= link_to 'Destroy', support_residence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Support Residence', new_support_residence_path %>

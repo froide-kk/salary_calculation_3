@@ -6,25 +6,63 @@
   <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   <%
+  # @duty_allowance = 0
+  # @base_salary = 0
+  # @job_ability_grade = 0
+  # @duty_allowance_task = 0
+
   @setting_values.each do |setting_value|
     if setting_value.name=='base_salary'
       @base_salary = setting_value.value
     end
   end
 
-  @detail_employee_salarys.each do |detail_employee_salary|
+  @personal_informations.each do |personal_information|
+    @duty_allowance = personal_information.position_grade.task_grade
+    @duty_allowance_task = personal_information.task.price
+
     @adjustments.each do |adjustment|
-      if detail_employee_salary.personal_information.name == adjustment.employee_name
+
+      @job_ability_grade = @duty_allowance
+
+      if personal_information.name == adjustment.employee_name
+        if adjustment.adjustment_type.name == "ISMS"
+          @job_ability_grade += adjustment.adjustment_type.value.to_i
+        end
+        if adjustment.adjustment_type.name == "safety_commissioner"
+          @job_ability_grade += adjustment.adjustment_type.value.to_i
+        end
+        if adjustment.adjustment_type.name == "small_group"
+          @job_ability_grade += adjustment.adjustment_type.value.to_i
+        end
+        if adjustment.adjustment_type.name == "management_assessment"
+          @job_ability_grade += adjustment.adjustment_type.value.to_i
+        end
+        if adjustment.adjustment_type.name == "technical_assessment"
+          @job_ability_grade += adjustment.adjustment_type.value.to_i
+        end
+        if adjustment.adjustment_type.name == "adjustment"
+          @job_ability_grade += adjustment.adjustment_type.value.to_i
+        end
+
+        if @duty_allowance > 0
+          @fixed_allowance = 0
+        else
+          @fixed_allowance = 10000
+        end
+
         if adjustment.adjustment_type.name == "shorter_working_hours"
           if adjustment.count == 1
-            @base_salary = @base_salary* 0.75
+            @base_salary = @base_salary * 0.75
+            @job_ability_grade = @job_ability_grade * 0.75
+            @duty_allowance_task = @duty_allowance_task * 0.75
+            @fixed_allowance = @fixed_allowance * 0.75
           end
         end
       end
     end
-
-    @duty_allowance = detail_employee_salary.personal_information.position_grade.job_ability_grade
   end
+
   %>
 </head>
 <body>
@@ -107,8 +145,11 @@
                   </nav>
               </div>
           </footer>
-          <div><%= "base_salary = " %><%= @base_salary %></div>
+          <!-- <div><%= "base_salary = " %><%= @base_salary %></div>
           <div><%= "\n duty_allowance = " %><%= @duty_allowance %></div>
+          <div><%= "\n job_ability_grade = " %><%= @job_ability_grade %></div>
+          <div><%= "\n duty_allowance_task = " %><%= @duty_allowance_task %></div>
+          <div><%= "\n fixed_allowance = " %><%= @fixed_allowance %></div> -->
           <div class="content">
               <div class="container-fluid">
                   <div class="row">

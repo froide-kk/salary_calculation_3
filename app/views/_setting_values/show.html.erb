@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @setting_value.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @setting_value.value %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @setting_value.year %>
+</p>
+
+<%= link_to 'Edit', edit_setting_value_path(@setting_value) %> |
+<%= link_to 'Back', "/admin/setting", method: :get %>

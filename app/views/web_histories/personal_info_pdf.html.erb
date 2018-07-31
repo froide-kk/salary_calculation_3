@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="jp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("#btnPrint").live("click", function () {
+            var divContents1 = $("#dvContainer1").html();
+            var divContents2 = $("#dvContainer2").html();
+            var divContents3 = $("#dvContainer3").html();
+            var printWindow = window.open('', '', 'height=800,width=1600');
+            printWindow.document.write('<html><head>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.write(
+                '<span style="font-family: Noto Sans CJK JP Regular, sans-serif;", align="center">'
+            );
+            printWindow.document.write(divContents1);
+            printWindow.document.write(divContents2);
+            printWindow.document.write(divContents3);
+            printWindow.document.write('</span>');
+            printWindow.document.write('</head><body >');
+            printWindow.document.close();
+            printWindow.print();
+        });
+    </script>
+</head>
+
+<body style="font-family: Noto Sans CJK JP Regular, sans-serif" align="center">
+    <form id="form1">
+        <input type="button" value="個人履歴PDF出力" id="btnPrint" />
+        &nbsp;&nbsp;
+        <%= link_to "/admin/history", method: :get do %>
+        <button class="btn btn-default pull-right" >前のページに戻る</button>
+        <% end %>
+    </form>
+    <br>
+    <div class="content" align="center">
+        <div id="dvContainer1" class="text-center">
+            <div style="float: right;">フロイデ株式会社　代表取締役　舩田　愛</div>
+            <br>
+            <div style="float:initial;">
+                <p>
+                    <h2>労働条件通知書　兼　定額残業代についての明細書</h2>
+                    （あなたの 月給 ・ 時給 は下記の通りです。）
+                </p>
+                適用開始日：平成　  年　　月　　日
+            </div>
+        </div>
+        <div id="dvContainer2">
+            <p>
+                <div class="table" align="center">
+                    <table border="1">
+                        <tr>
+                            <td>No.</td>
+                            <td>内訳</td>
+                            <td>金額</td>
+                        </tr>
+                        <tr>
+                            <td>①</td>
+                            <td>基準給与</td>
+                            <td>¥120,250</td>
+                        </tr>
+                        <tr>
+                            <td>②</td>
+                            <td>職能給（基準）</td>
+                            <td>¥29,000</td>
+                        </tr>
+                        <tr>
+                            <td>③</td>
+                            <td>役職手当</td>
+                            <td>¥0</td>
+                        </tr>
+                        <tr>
+                            <td>④</td>
+                            <td>職務手当</td>
+                            <td>¥25,000</td>
+                        </tr>
+                        <tr>
+                            <td>⑤</td>
+                            <td>精勤手当</td>
+                            <td>¥10,000</td>
+                        </tr>
+                        <tr>
+                            <td>⑥</td>
+                            <td>首都圏手当</td>
+                            <td>¥0</td>
+                        </tr>
+                        <tr>
+                            <td>⑦</td>
+                            <td>基本給（①～⑥合計）</td>
+                            <td>¥184,250</td>
+                        </tr>
+                        <tr>
+                            <td>⑧</td>
+                            <td>定額残業代※１</td>
+                            <td>¥56,480</td>
+                        </tr>
+                        <tr>
+                            <td>⑨</td>
+                            <td>家族手当</td>
+                            <td>¥0</td>
+                        </tr>
+                        <tr>
+                            <td>⑩</td>
+                            <td>額面給与（⑦＋⑧＋⑨）</td>
+                            <td>¥240,730</td>
+                        </tr>
+                    </table>
+                </div>
+            </p>
+            <p>
+                ※１　定額残業代明細
+                <div class="table" align="center">
+                    <table border="1">
+                        <tr>
+                            <td>時間単価</td>
+                            <td>¥1,129</td>
+                        </tr>
+                        <tr>
+                            <td>残業単価</td>
+                            <td>¥1,412</td>
+                        </tr>
+                        <tr>
+                            <td>定額残業時間</td>
+                            <td>40</td>
+                        </tr>
+                    </table>
+                </div>
+            </p>
+            <div align="left">
+                <p>
+                    　　　　　　　（１）年間休日： 120日
+                    <br> 　　　　　　　（２）基本勤務時間　09:00～18:00（昼休み　12:00～13:00）
+                    <br> 　　　　　　　　　　１年単位の変形労働時間制
+                </p>
+            </div>
+        </div>
+        <div id="dvContainer3">
+            <div align="left">
+                <p>
+                    　１． あなたの時間外労働時間数が定額時間を超えた月については、
+                    <br> 　　　 上記残業単価の額に当該超えた時間数を乗じて得た額を追加の残業代として払います。
+                    <br> 　２．その他深夜残業、休日出勤に関しては、労働基準法にのっとり算出し、支払うものとします。
+                </p>
+            </div>
+            <div align="center">
+                <p>
+                    上記内容を確認し、ここに同意致します。
+                </p>
+                <p>
+                    平成　　　年　　　月　　　日
+                    <br> 労働者　　　　　　　　　　　　　　㊞
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

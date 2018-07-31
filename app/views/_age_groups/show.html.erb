@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Personal information:</strong>
+  <%= @age_group.personal_information_id %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @age_group.age %>
+</p>
+
+<p>
+  <strong>Age point:</strong>
+  <%= @age_group.age_point %>
+</p>
+
+<p>
+  <strong>Age adjustment:</strong>
+  <%= @age_group.age_adjustment %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @age_group.date %>
+</p>
+
+<%= link_to 'Edit', edit_age_group_path(@age_group) %> |
+<%= link_to 'Back', age_groups_path %>

@@ -1,0 +1,72 @@
+<%= form_with(model: personal_information, local: true) do |form| %>
+  <% if personal_information.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(personal_information.errors.count, "error") %> prohibited this personal_information from being saved:</h2>
+
+      <ul>
+      <% personal_information.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :employee_id %>
+    <%= form.number_field :employee_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :department_id %>
+    <%= form.text_field :department_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :position_grade_id %>
+    <%= form.text_field :position_grade_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :task_id %>
+    <%= form.text_field :task_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birth %>
+    <%= form.text_field :birth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :insurance %>
+    <%= form.text_field :insurance %>
+  </div>
+
+  <div class="field">
+    <%= form.label :residence_id %>
+    <%= form.text_field :residence_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :join_date %>
+    <%= form.date_select :join_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

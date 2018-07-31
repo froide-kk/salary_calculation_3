@@ -1,0 +1,2 @@
+json.extract! detail_employee_salary, :id, :personal_information_id, :face_salary, :minus_salary, :promotion_rate, :base_salary, :basic_pay, :time_unit_price, :fixed_extra_task_time, :fixed_overtime, :job_ability_grade, :duty_allowance, :duty_allowance_task, :fixed_allowance, :half_year_salary, :last_years_hourly, :hourly_difference, :hourly_difference_percent, :created_at, :updated_at
+json.url detail_employee_salary_url(detail_employee_salary, format: :json)

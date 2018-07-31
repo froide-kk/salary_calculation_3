@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Detail Employee Salaries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Personal information</th>
+      <th>Face salary</th>
+      <th>Minus salary</th>
+      <th>Promotion rate</th>
+      <th>Base salary</th>
+      <th>Basic pay</th>
+      <th>Time unit price</th>
+      <th>Fixed extra task time</th>
+      <th>Fixed overtime</th>
+      <th>Job ability grade</th>
+      <th>Duty allowance</th>
+      <th>Duty allowance task</th>
+      <th>Fixed allowance</th>
+      <th>Half year salary</th>
+      <th>Last years hourly</th>
+      <th>Hourly difference</th>
+      <th>Hourly difference percent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @detail_employee_salaries.each do |detail_employee_salary| %>
+      <tr>
+        <td><%= detail_employee_salary.personal_information_id %></td>
+        <td><%= detail_employee_salary.face_salary %></td>
+        <td><%= detail_employee_salary.minus_salary %></td>
+        <td><%= detail_employee_salary.promotion_rate %></td>
+        <td><%= detail_employee_salary.base_salary %></td>
+        <td><%= detail_employee_salary.basic_pay %></td>
+        <td><%= detail_employee_salary.time_unit_price %></td>
+        <td><%= detail_employee_salary.fixed_extra_task_time %></td>
+        <td><%= detail_employee_salary.fixed_overtime %></td>
+        <td><%= detail_employee_salary.job_ability_grade %></td>
+        <td><%= detail_employee_salary.duty_allowance %></td>
+        <td><%= detail_employee_salary.duty_allowance_task %></td>
+        <td><%= detail_employee_salary.fixed_allowance %></td>
+        <td><%= detail_employee_salary.half_year_salary %></td>
+        <td><%= detail_employee_salary.last_years_hourly %></td>
+        <td><%= detail_employee_salary.hourly_difference %></td>
+        <td><%= detail_employee_salary.hourly_difference_percent %></td>
+        <td><%= link_to 'Show', detail_employee_salary %></td>
+        <td><%= link_to 'Edit', edit_detail_employee_salary_path(detail_employee_salary) %></td>
+        <td><%= link_to 'Destroy', detail_employee_salary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Detail Employee Salary', new_detail_employee_salary_path %>

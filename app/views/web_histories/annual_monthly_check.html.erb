@@ -67,12 +67,7 @@
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <%= link_to "/admins/history", method: :get  do %>
-                                年、月別、照会
-                            <% end %>
-                        </li>
-                        <li>
-                            <%= link_to "/admins/history", method: :get  do %>
+                            <%= link_to "/admin/history/personal_info_pdf", method: :get  do %>
                                 個人シンサンの照会(PDF出力)
                             <% end %>
                         </li>
@@ -81,19 +76,15 @@
             </div>
         </footer>
 
-        <footer class="footer">
+    </div>
+</div>
+          <footer class="footer">
             <div class="container-fluid">
                 <p class="copyright pull-right">
                     &copy; <script>document.write(new Date().getFullYear())</script> <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
                 </p>
             </div>
         </footer>
-
-
-    </div>
-</div>
-
-
 </body>
 <!--   Core JS Files   -->
 <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>

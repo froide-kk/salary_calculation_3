@@ -1,0 +1,42 @@
+<%= form_with(model: age_group, local: true) do |form| %>
+  <% if age_group.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(age_group.errors.count, "error") %> prohibited this age_group from being saved:</h2>
+
+      <ul>
+      <% age_group.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :personal_information_id %>
+    <%= form.number_field :personal_information_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age %>
+    <%= form.number_field :age %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age_point %>
+    <%= form.number_field :age_point %>
+  </div>
+
+  <div class="field">
+    <%= form.label :age_adjustment %>
+    <%= form.number_field :age_adjustment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
