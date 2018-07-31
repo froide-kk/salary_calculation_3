@@ -6,25 +6,25 @@
   <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
 
   <%
-  @setting_values.each do |setting_value|
-    if setting_value.name=='base_salary'
-      @base_salary = setting_value.value
-    end
-  end
-
-  @detail_employee_salarys.each do |detail_employee_salary|
-    @adjustments.each do |adjustment|
-      if detail_employee_salary.personal_information.name == adjustment.employee_name
-        if adjustment.adjustment_type.name == "shorter_working_hours"
-          if adjustment.count == 1
-            @base_salary = @base_salary* 0.75
-          end
-        end
-      end
-    end
-
-    @duty_allowance = detail_employee_salary.personal_information.position_grade.job_ability_grade
-  end
+  # @setting_values.each do |setting_value|
+  #   if setting_value.name=='base_salary'
+  #     @base_salary = setting_value.value
+  #   end
+  # end
+  #
+  # @detail_employee_salarys.each do |detail_employee_salary|
+  #   @adjustments.each do |adjustment|
+  #     if detail_employee_salary.personal_information.name == adjustment.employee_name
+  #       if adjustment.adjustment_type.name == "shorter_working_hours"
+  #         if adjustment.count == 1
+  #           @base_salary = @base_salary* 0.75
+  #         end
+  #       end
+  #     end
+  #   end
+  #
+  #   @duty_allowance = detail_employee_salary.personal_information.position_grade.job_ability_grade
+  # end
   %>
 </head>
 <body>
