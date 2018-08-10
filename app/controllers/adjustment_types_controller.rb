@@ -28,7 +28,7 @@ class AdjustmentTypesController < ApplicationController
 
     respond_to do |format|
       if @adjustment_type.save
-        format.html { redirect_to @adjustment_type, notice: 'Adjustment type was successfully created.' }
+        format.html { redirect_to '/admin/setting', notice: 'Adjustment type was successfully created.' }
         format.json { render :show, status: :created, location: @adjustment_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class AdjustmentTypesController < ApplicationController
   def update
     respond_to do |format|
       if @adjustment_type.update(adjustment_type_params)
-        format.html { redirect_to @adjustment_type, notice: 'Adjustment type was successfully updated.' }
+        format.html { redirect_to '/admin/setting', notice: 'Adjustment type was successfully updated.' }
         format.json { render :show, status: :ok, location: @adjustment_type }
       else
         format.html { render :edit }

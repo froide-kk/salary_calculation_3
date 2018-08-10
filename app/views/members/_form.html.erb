@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :家族形態id %>
-    <%= form.text_field :member_type_id %>
+    <%= form.collection_select(:member_type_id, @member_types, :id, :name) %>
   </div>
 
   <div class="field">

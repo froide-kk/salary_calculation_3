@@ -15,10 +15,12 @@ class MembersController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
+    @member_types = MemberType.all
   end
 
   # GET /members/1/edit
   def edit
+    @member_types = MemberType.all
   end
 
   # POST /members
@@ -28,7 +30,7 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html { redirect_to @member, notice: 'Member was successfully created.' }
+        format.html { redirect_to '/admin/personal/family_info', notice: 'Member was successfully created.' }
         format.json { render :show, status: :created, location: @member }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class MembersController < ApplicationController
   def update
     respond_to do |format|
       if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
+        format.html { redirect_to '/admin/personal/family_info', notice: 'Member was successfully updated.' }
         format.json { render :show, status: :ok, location: @member }
       else
         format.html { render :edit }

@@ -38,6 +38,6 @@ hint: 'adjustment hint'
 
 AdjustmentType.create(
 name: 'shorter_working_hours',
-value: '2000',
+value: '0',
 hint: 'shorter_working_hours hint'
 )

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :age_adjustments
+  resources :personal_info_pdfs
   resources :web_logins
   resources :web_settings
   resources :web_histories
@@ -34,11 +36,12 @@ Rails.application.routes.draw do
 
   get '/admin/wage', to: 'web_wages#wage_management'
   get '/admin/wage/wage_management', to: 'web_wages#wage_management'
+  post '/admin/wage/new', to: 'web_wages#new_wage'
   get '/admin/wage/age_info', to: 'web_wages#age_info'
   get '/admin/wage/adjustment_values_info', to: 'web_wages#adjustment_values_info'
 
   get '/admin/history/', to: 'web_histories#annual_monthly_check'
-  get '/admin/history/personal_info_pdf', to: 'web_histories#personal_info_pdf'
+  get '/admin/history/personal_info_pdf/:id', to: 'personal_info_pdfs#index'
   # get '/admin/history/annual_monthly_check', to: 'web_histories#annual_monthly_check'
 
   get '/admin/setting', to: 'web_settings#index'

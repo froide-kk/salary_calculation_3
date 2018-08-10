@@ -73,19 +73,16 @@
       }
       age_point = age_standard - base_age;
 
-      if(price==0){
+      if(price>0){
         age_adjustment_value = 0;
       }
       else if(age_point>10){
         age_adjustment_value = 10;
       }
-      else if(age_point<=10){
-        age_adjustment_value = age_point;
-      }
       else if(age_point<-10){
         age_adjustment_value = -10;
       }
-      else if(age_point>=-10){
+      else{
         age_adjustment_value = age_point;
       }
       document.write('<td>'+age_adjustment_value+'</td>');

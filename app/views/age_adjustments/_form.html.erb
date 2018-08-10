@@ -1,0 +1,27 @@
+<%= form_with(model: age_adjustment, local: true) do |form| %>
+  <% if age_adjustment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(age_adjustment.errors.count, "error") %> prohibited this age_adjustment from being saved:</h2>
+
+      <ul>
+      <% age_adjustment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

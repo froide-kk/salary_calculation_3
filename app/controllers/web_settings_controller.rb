@@ -12,5 +12,6 @@ class WebSettingsController < ApplicationController
     @adjustment_types = AdjustmentType.all
     @departments = Department.all
     @logins = Login.all
+    @age_adjustments = AgeAdjustment.all
   end
 end

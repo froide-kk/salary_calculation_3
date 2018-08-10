@@ -28,7 +28,7 @@ class PositionGradesController < ApplicationController
 
     respond_to do |format|
       if @position_grade.save
-        format.html { redirect_to @position_grade, notice: 'Position grade was successfully created.' }
+        format.html { redirect_to '/admin/setting', notice: 'Position grade was successfully created.' }
         format.json { render :show, status: :created, location: @position_grade }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class PositionGradesController < ApplicationController
   def update
     respond_to do |format|
       if @position_grade.update(position_grade_params)
-        format.html { redirect_to @position_grade, notice: 'Position grade was successfully updated.' }
+        format.html { redirect_to '/admin/setting', notice: 'Position grade was successfully updated.' }
         format.json { render :show, status: :ok, location: @position_grade }
       else
         format.html { render :edit }

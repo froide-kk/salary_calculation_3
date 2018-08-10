@@ -15,10 +15,12 @@ class SupportResidencesController < ApplicationController
   # GET /support_residences/new
   def new
     @support_residence = SupportResidence.new
+    @personal_informations = PersonalInformation.all
   end
 
   # GET /support_residences/1/edit
   def edit
+    @personal_informations = PersonalInformation.all
   end
 
   # POST /support_residences
@@ -28,7 +30,7 @@ class SupportResidencesController < ApplicationController
 
     respond_to do |format|
       if @support_residence.save
-        format.html { redirect_to @support_residence, notice: 'Support residence was successfully created.' }
+        format.html { redirect_to '/admin/personal/monthly_rent_support_info', notice: 'Support residence was successfully created.' }
         format.json { render :show, status: :created, location: @support_residence }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class SupportResidencesController < ApplicationController
   def update
     respond_to do |format|
       if @support_residence.update(support_residence_params)
-        format.html { redirect_to @support_residence, notice: 'Support residence was successfully updated.' }
+        format.html { redirect_to '/admin/personal/monthly_rent_support_info', notice: 'Support residence was successfully updated.' }
         format.json { render :show, status: :ok, location: @support_residence }
       else
         format.html { render :edit }

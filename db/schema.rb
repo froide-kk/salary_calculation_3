@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_30_053329) do
+ActiveRecord::Schema.define(version: 2018_08_09_042218) do
 
   create_table "adjustment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2018_07_30_053329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["adjustment_type_id"], name: "fk_rails_b9e1078207"
+  end
+
+  create_table "age_adjustments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "age_groups", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -66,6 +73,9 @@ ActiveRecord::Schema.define(version: 2018_07_30_053329) do
     t.float "hourly_difference_percent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "family_allowance"
+    t.integer "age_point"
+    t.integer "age_adjustment"
     t.index ["personal_information_id"], name: "fk_rails_bbea969dda"
   end
 
@@ -91,6 +101,11 @@ ActiveRecord::Schema.define(version: 2018_07_30_053329) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_type_id"], name: "fk_rails_9a10de6ee1"
+  end
+
+  create_table "personal_info_pdfs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "personal_informations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -140,12 +155,13 @@ ActiveRecord::Schema.define(version: 2018_07_30_053329) do
   end
 
   create_table "support_residences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "employee_name"
+    t.bigint "personal_information_id", null: false
     t.string "name"
     t.integer "price"
     t.date "start_month"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["personal_information_id"], name: "fk_personal"
   end
 
   create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -187,4 +203,5 @@ ActiveRecord::Schema.define(version: 2018_07_30_053329) do
   add_foreign_key "personal_informations", "position_grades"
   add_foreign_key "personal_informations", "residences"
   add_foreign_key "personal_informations", "tasks"
+  add_foreign_key "support_residences", "personal_informations", name: "fk_personal"
 end

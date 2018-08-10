@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :評価値形態id %>
-    <%= form.text_field :adjustment_type_id %>
+    <%= form.collection_select(:adjustment_type_id, @adjustment_types, :id, :name) %>
   </div>
 
   <div class="field">

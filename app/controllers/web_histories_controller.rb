@@ -5,10 +5,12 @@ class WebHistoriesController < ApplicationController
   # GET /admin/history/annual_monthly_check
   # GET /web_wages.json
   def annual_monthly_check
+    @detail_employee_salarys = DetailEmployeeSalary.all
   end
 
   # GET /admin/history/personal_info_pdf
   def personal_info_pdf
+    @detail_employee_salary = DetailEmployeeSalary.find(params[:id])
   end
 
   # GET /web_histories/1

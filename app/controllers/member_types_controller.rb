@@ -28,7 +28,7 @@ class MemberTypesController < ApplicationController
 
     respond_to do |format|
       if @member_type.save
-        format.html { redirect_to @member_type, notice: 'Member type was successfully created.' }
+        format.html { redirect_to '/admin/setting', notice: 'Member type was successfully created.' }
         format.json { render :show, status: :created, location: @member_type }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MemberTypesController < ApplicationController
   def update
     respond_to do |format|
       if @member_type.update(member_type_params)
-        format.html { redirect_to @member_type, notice: 'Member type was successfully updated.' }
+        format.html { redirect_to '/admin/setting', notice: 'Member type was successfully updated.' }
         format.json { render :show, status: :ok, location: @member_type }
       else
         format.html { render :edit }

@@ -23,27 +23,22 @@
 
   <div class="field">
     <%= form.label :部署id %>
-    <%= form.text_field :department_id %>
+    <%= form.collection_select(:department_id, @departments, :id, :name) %>
   </div>
 
   <div class="field">
     <%= form.label :職位id %>
-    <%= form.text_field :position_grade_id %>
+    <%= form.collection_select(:position_grade_id, @position_grades, :id, :name) %>
   </div>
 
   <div class="field">
     <%= form.label :業務id %>
-    <%= form.text_field :task_id %>
+    <%= form.collection_select(:task_id, @tasks, :id, :name) %>
   </div>
 
   <div class="field">
     <%= form.label :生年月日 %>
     <%= form.text_field :birth %>
-  </div>
-
-  <div class="field">
-    <%= form.label :年齢 %>
-    <%= form.number_field :age %>
   </div>
 
   <div class="field">
@@ -53,7 +48,7 @@
 
   <div class="field">
     <%= form.label :居住地id %>
-    <%= form.text_field :residence_id %>
+    <%= form.collection_select(:residence_id, @residences, :id, :name) %>
   </div>
 
   <div class="field">
@@ -69,4 +64,15 @@
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
+<!-- <%= form_tag("/personal_information/id", method: "post") do %>
+
+  <div class="field">
+    <%= label_tag(:employee_id, "社員番号") %>
+    <%= text_field_tag(:employee_id) %>
+  </div>
+
+  <%= collection_select(:id, :name, PersonalInformation.all, :id, :name) %>
+
+<% end %> -->

@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :社員名 %>
-    <%= form.text_field :employee_name %>
+    <%= form.collection_select(:personal_information_id, @personal_informations, :id, :name) %>
   </div>
 
   <div class="field">

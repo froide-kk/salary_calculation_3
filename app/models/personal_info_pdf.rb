@@ -1,0 +1,2 @@
+class PersonalInfoPdf < ApplicationRecord
+end

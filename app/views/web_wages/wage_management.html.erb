@@ -4,64 +4,7 @@
   <title>給与管理システム</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag  'admin', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%
-  # @duty_allowance = 0
-  # @base_salary = 0
-  # @job_ability_grade = 0
-  # @duty_allowance_task = 0
 
-  # @setting_values.each do |setting_value|
-  #   if setting_value.name=='base_salary'
-  #     @base_salary = setting_value.value
-  #   end
-  # end
-  #
-  # @personal_informations.each do |personal_information|
-  #   @duty_allowance = personal_information.position_grade.task_grade
-  #   @duty_allowance_task = personal_information.task.price
-  #
-  #   @adjustments.each do |adjustment|
-  #
-  #     @job_ability_grade = @duty_allowance
-  #
-  #     if personal_information.name == adjustment.employee_name
-  #       if adjustment.adjustment_type.name == "ISMS"
-  #         @job_ability_grade += adjustment.adjustment_type.value.to_i
-  #       end
-  #       if adjustment.adjustment_type.name == "safety_commissioner"
-  #         @job_ability_grade += adjustment.adjustment_type.value.to_i
-  #       end
-  #       if adjustment.adjustment_type.name == "small_group"
-  #         @job_ability_grade += adjustment.adjustment_type.value.to_i
-  #       end
-  #       if adjustment.adjustment_type.name == "management_assessment"
-  #         @job_ability_grade += adjustment.adjustment_type.value.to_i
-  #       end
-  #       if adjustment.adjustment_type.name == "technical_assessment"
-  #         @job_ability_grade += adjustment.adjustment_type.value.to_i
-  #       end
-  #       if adjustment.adjustment_type.name == "adjustment"
-  #         @job_ability_grade += adjustment.adjustment_type.value.to_i
-  #       end
-  #
-  #       if @duty_allowance > 0
-  #         @fixed_allowance = 0
-  #       else
-  #         @fixed_allowance = 10000
-  #       end
-  #
-  #       if adjustment.adjustment_type.name == "shorter_working_hours"
-  #         if adjustment.count == 1
-  #           @base_salary = @base_salary * 0.75
-  #           @job_ability_grade = @job_ability_grade * 0.75
-  #           @duty_allowance_task = @duty_allowance_task * 0.75
-  #           @fixed_allowance = @fixed_allowance * 0.75
-  #         end
-  #       end
-  #     end
-  #   end
-  # end
-  %>
 </head>
 <body>
   <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
@@ -143,14 +86,20 @@
                   </nav>
               </div>
           </footer>
-          <!-- <div><%= "base_salary = " %><%= @base_salary %></div>
-          <div><%= "\n duty_allowance = " %><%= @duty_allowance %></div>
-          <div><%= "\n job_ability_grade = " %><%= @job_ability_grade %></div>
-          <div><%= "\n duty_allowance_task = " %><%= @duty_allowance_task %></div>
-          <div><%= "\n fixed_allowance = " %><%= @fixed_allowance %></div> -->
+
           <div class="content">
               <div class="container-fluid">
                   <div class="row">
+
+                    <div class="col-md-12">
+                      <%= form_tag("/admin/wage/new", method: "post") do %>
+                        <%= collection_select(:employee, :employee_name, PersonalInformation.all, :id, :name) %>
+                        <%= select_date Date.today, prefix: :new_date %>
+                        <%= submit_tag("New Employee Wage") %>
+                      <% end %>
+                      <br /><br />
+                    </div>
+
                       <div class="col-md-12">
                           <div class="card">
                               <div class="header">
@@ -160,10 +109,9 @@
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover table-striped">
                                       <thead>
-                                        <th>社員の名</th>
+                                        <th>社員名</th>
                                         <th>基本給</th>
                                         <th>定額残業代</th>
-                                        <th>家族数 * 家族の形態の手当</th>
                                         <th>額面給与</th>
                                         <th>2018下期給与</th>
                                         <th>データ作成月</th>
@@ -174,10 +122,9 @@
                                             <td><%= detail_employee_salary.personal_information.name %></td>
                                             <td><%= detail_employee_salary.basic_pay %></td>
                                             <td><%= detail_employee_salary.fixed_overtime %></td>
-                                            <td>000</td>
                                             <td><%= detail_employee_salary.face_salary %></td>
                                             <td><%= detail_employee_salary.half_year_salary %></td>
-                                            <td><%= detail_employee_salary.updated_at.strftime('%Y-%m-%d') %></td>
+                                            <td><%= detail_employee_salary.created_at.strftime('%Y-%m-%d') %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>
@@ -195,17 +142,17 @@
                               <div class="content table-responsive table-full-width">
                                   <table class="table table-hover">
                                       <thead>
-                                        <th>社員の名</th>
-                                        <th>差額</th>
-                                        <th>昇給率</th>
+                                        <th>社員名</th>
                                         <th>基準給与</th>
-                                        <th>時間単価</th>
-                                        <th>定額残業時間</th>
-                                        <th>職能給(基準)</th>
                                         <th>役職手当</th>
+                                        <th>職能給(基準)</th>
                                         <th>職務手当</th>
                                         <th>精勤手当</th>
+                                        <th>定額残業時間</th>
+                                        <th>時間単価</th>
                                         <th>昨年時給</th>
+                                        <th>差額</th>
+                                        <th>昇給率</th>
                                         <th>時給差額</th>
                                         <th>時給差額パーセント</th>
                                         <th>データ作成月</th>
@@ -215,19 +162,19 @@
                                         %>
                                           <tr>
                                             <td><%= detail_employee_salary.personal_information.name %></td>
-                                            <td><%= detail_employee_salary.minus_salary %></td>
-                                            <td><%= detail_employee_salary.promotion_rate %></td>
                                             <td><%= detail_employee_salary.base_salary %></td>
-                                            <td><%= detail_employee_salary.time_unit_price %></td>
-                                            <td><%= detail_employee_salary.fixed_extra_task_time %></td>
-                                            <td><%= detail_employee_salary.job_ability_grade %></td>
                                             <td><%= detail_employee_salary.duty_allowance %></td>
+                                            <td><%= detail_employee_salary.job_ability_grade %></td>
                                             <td><%= detail_employee_salary.duty_allowance_task %></td>
                                             <td><%= detail_employee_salary.fixed_allowance %></td>
+                                            <td><%= detail_employee_salary.fixed_extra_task_time %></td>
+                                            <td><%= detail_employee_salary.time_unit_price %></td>
                                             <td><%= detail_employee_salary.last_years_hourly %></td>
+                                            <td><%= detail_employee_salary.minus_salary %></td>
+                                            <td><%= detail_employee_salary.promotion_rate %></td>
                                             <td><%= detail_employee_salary.hourly_difference %></td>
                                             <td><%= detail_employee_salary.hourly_difference_percent %></td>
-                                            <td><%= detail_employee_salary.updated_at.strftime('%Y-%m-%d') %></td>
+                                            <td><%= detail_employee_salary.created_at.strftime('%Y-%m-%d') %></td>
                                           </tr>
                                         <% end %>
                                       </tbody>

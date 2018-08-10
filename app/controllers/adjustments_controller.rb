@@ -15,10 +15,12 @@ class AdjustmentsController < ApplicationController
   # GET /adjustments/new
   def new
     @adjustment = Adjustment.new
+    @adjustment_types = AdjustmentType.all
   end
 
   # GET /adjustments/1/edit
   def edit
+    @adjustment_types = AdjustmentType.all
   end
 
   # POST /adjustments
@@ -28,7 +30,7 @@ class AdjustmentsController < ApplicationController
 
     respond_to do |format|
       if @adjustment.save
-        format.html { redirect_to @adjustment, notice: 'Adjustment was successfully created.' }
+        format.html { redirect_to '/admin/wage/adjustment_values_info', notice: 'Adjustment was successfully created.' }
         format.json { render :show, status: :created, location: @adjustment }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class AdjustmentsController < ApplicationController
   def update
     respond_to do |format|
       if @adjustment.update(adjustment_params)
-        format.html { redirect_to @adjustment, notice: 'Adjustment was successfully updated.' }
+        format.html { redirect_to '/admin/wage/adjustment_values_info', notice: 'Adjustment was successfully updated.' }
         format.json { render :show, status: :ok, location: @adjustment }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class AdjustmentsController < ApplicationController
   def destroy
     @adjustment.destroy
     respond_to do |format|
-      format.html { redirect_to adjustments_url, notice: 'Adjustment was successfully destroyed.' }
+      format.html { redirect_to '/admin/wage/adjustment_values_info', notice: 'Adjustment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

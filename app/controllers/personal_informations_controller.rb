@@ -1,6 +1,5 @@
 class PersonalInformationsController < ApplicationController
   before_action :set_personal_information, only: [:show, :edit, :update, :destroy]
-
   # GET /personal_informations
   # GET /personal_informations.json
   def index
@@ -15,10 +14,18 @@ class PersonalInformationsController < ApplicationController
   # GET /personal_informations/new
   def new
     @personal_information = PersonalInformation.new
+    @departments = Department.all
+    @position_grades = PositionGrade.all
+    @tasks = Task.all
+    @residences = Residence.all
   end
 
   # GET /personal_informations/1/edit
   def edit
+    @departments = Department.all
+    @position_grades = PositionGrade.all
+    @tasks = Task.all
+    @residences = Residence.all
   end
 
   # POST /personal_informations
@@ -28,7 +35,7 @@ class PersonalInformationsController < ApplicationController
 
     respond_to do |format|
       if @personal_information.save
-        format.html { redirect_to @personal_information, notice: 'Personal information was successfully created.' }
+        format.html { redirect_to '/admin/personal', notice: 'Personal information was successfully created.' }
         format.json { render :show, status: :created, location: @personal_information }
       else
         format.html { render :new }
@@ -42,7 +49,7 @@ class PersonalInformationsController < ApplicationController
   def update
     respond_to do |format|
       if @personal_information.update(personal_information_params)
-        format.html { redirect_to @personal_information, notice: 'Personal information was successfully updated.' }
+        format.html { redirect_to '/admin/personal', notice: 'Personal information was successfully updated.' }
         format.json { render :show, status: :ok, location: @personal_information }
       else
         format.html { render :edit }

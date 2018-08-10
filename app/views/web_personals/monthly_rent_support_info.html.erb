@@ -108,7 +108,7 @@
                                       <% @support_residences.each do |support_residence|
                                       %>
                                         <tr>
-                                          <td><%= 'yong' %></td>
+                                          <td><%= support_residence.personal_information.name %></td>
                                           <td><%= support_residence.name %></td>
                                           <td><%= support_residence.price %></td>
                                           <td><%= support_residence.start_month %></td>

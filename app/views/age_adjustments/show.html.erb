@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @age_adjustment.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @age_adjustment.value %>
+</p>
+
+<%= link_to 'Edit', edit_age_adjustment_path(@age_adjustment) %> |
+<%= link_to 'Back', age_adjustments_path %>
